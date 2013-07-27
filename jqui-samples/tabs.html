@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>jQuery tabs</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+<link rel="stylesheet" href="jquery-ui.css" />
+<script>
+$(function() {
+	$( "#tabs" ).tabs();
+});
+</script>
+</head>
+<body>
+<div id="tabs">
+<ul>
+<li><a href="#tabs-1">tab1</a></li>
+<li><a href="#tabs-2">tab2</a></li>
+</ul>
+<div id="tabs-1">
+<p>パネル１</p>
+</div>
+<div id="tabs-2">
+<p>パネル２</p>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Canvas API Test</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<canvas id="square" width="300" height="300">
+枠（青色）、面（水色）の四角形
+</canvas>
+
+<script>
+var canvas = document.getElementById('square');
+if(canvas && typeof(canvas.getContext) === 'function') {
+	var ctx = canvas.getContext('2d');
+	if(ctx) {
+		// 四角形の領域をクリア
+
+		// 線の色を青に設定
+		// 四角形を描画
+		
+		// 塗りつぶし色を水色に
+		// 塗りつぶし有りで四角形を描画
+		
+
+	}
+}
+</script>
+</body>
+</html>

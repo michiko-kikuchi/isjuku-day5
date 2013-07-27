@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>jQuery effect2</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+<link rel="stylesheet" href="jquery-ui.css" />
+<script>
+$(function() {
+	function runEffect() {
+		var selectedEffect = "blind";
+		
+		var options = {};
+		
+		$( "#effect" ).effect( selectedEffect, options, 1000, callback );
+	};
+	
+	function callback() {
+		setTimeout(function() {
+			$( "#effect" ).removeAttr( "style" ).hide().fadeIn();
+		}, 1000 );
+	};
+	
+	$( "#start" ).click(function() {
+		runEffect();
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+<div id="effect">こんにちは！</div>
+<input type="button" id="start" value="スタート">
+</body>
+</html>

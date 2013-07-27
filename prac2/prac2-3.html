@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Canvas API Test</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<canvas id="line" width="300" height="300">
+線
+</canvas>
+
+<script>
+var canvas = document.getElementById('line');
+if(canvas && typeof(canvas.getContext) === 'function') {
+var ctx = canvas.getContext('2d');
+	if(ctx) {
+		// 描画の開始
+		ctx.beginPath();
+		// 線の太さを3ピクセルに
+		ctx.lineWidth = 3;
+		// 20, 20の座標にペンを移動
+		ctx.moveTo(20, 20);
+		// 現在位置から200,120に対して線を引く
+		ctx.lineTo(200, 120);
+		// 現在位置から140,30に対して線を引く
+		ctx.lineTo(140, 30);
+		// 線を閉じる
+		ctx.closePath();
+		// 実際に描画する
+		ctx.stroke();
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Web Service API Test</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+</head>
+<body>
+
+<script>
+function search(){
+    // 写真を出力する要素をクリア
+    $('#photolist').html('');
+    // JSONP呼び出し
+    $.getJSON(
+        // flickrのWebサービスURL。jsoncallback=?をつけることでJSONPと認識
+        "http://www.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+            tags:  $('#query') .val(), // テキストボックスの内容をタグとして検索
+            tagmode: "any", //タグ検索モード
+            format: "json" // 出力形式をJSON形式に指定
+          },
+        function(data){
+            // .eachは指定したオブジェクトの配列要素すべてに対して繰り返し処理するforeachと等価
+            $.each(data.items, function(i, item) {
+                // imgタグ要素を生成し、画像のURLをmedia.mで指定し、id="photolist"のタグ要素に追加する
+                $('<img/>').attr('src', item.media.m).appendTo('#photolist');
+              });
+        }); 
+};
+
+</script>
+<h3>
+    Flickr Webサービス使用例
+</h3>
+<input type="text" id="query" value="岩手" />
+<input type="button" id="search_button" value="検索" onclick="search()"/>
+<div id="photolist">
+    
+</div>
+</body>
+</html>

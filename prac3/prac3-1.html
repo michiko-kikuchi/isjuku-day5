@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>WebStorage(Local) Test</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+</head>
+<body>
+
+<script>
+if (typeof localStorage == 'undefined') {
+	document.write("<p>お使いのブラウザではWebStorageが使えません。</p>");
+}else{
+
+	$(function() {
+		var storage = localStorage;
+		var data = JSON.parse(storage.getItem('data'));
+		if(data == undefined) data = new Array();
+		
+		
+		function addData(item) {
+			// 変数dataにitemを追加
+			data.push(item);
+			// JSONデータとしてlocalStorageのキー値'data'に代入するコードを追加してください。
+			//（注意：配列は、そのままでは代入できないため、JSON.stringifyメソッドを利用してJSON文字列化してください。）
+		
+			showData();
+		};
+		
+		function showData() {
+			// JSON.parseメソッドを利用して
+			// localStorageのキー値'data'に格納されているJSON文字列を配列オブジェクトに変換し
+			// 変数dataに格納してください。
+			data = JSON.parse(/* localStorageのキー値'data'の取得*/);
+			
+			if(data == undefined) data = new Array();
+			
+			var listHtml='<ul>'
+			
+			for (var i=0; i < data.length; i++) {
+				// それぞれのデータに対して項目表示を繰り返す
+				listHtml +='<li>'+data[i]+"</li>";
+			}
+			listHtml+='</ul>';
+			$('#data').html(listHtml);
+		};
+		
+		$( '#addButton' ).click(function() {
+			addData($('#newItem').val());
+			return false;
+		});
+			
+		$( '#clearButton' ).click(function() {
+			// WebStorageを初期化するコードを挿入してください。
+			
+			window.alert('全削除しました。');
+			data = new Array();
+			showData();
+			return false;
+		});
+		//
+		showData();
+	});
+}
+</script>
+<div id="data">
+</div>
+<input id="newItem" type="text" value="" >
+<input id="addButton" type="button" value="登録" />
+<input id="clearButton" type="button" value="全削除" />
+</body>
+</html>
